@@ -41,6 +41,7 @@ function getKoalas() {
     // let lastIndex = temperatureTable.lastElementChild;
     // let tableData = Number(lastIndex.firstElementChild.innerHTML);
     viewKoalas.innerHTML = '';
+    let i = 0;
     for (let koala of koalasFromServer) {
       viewKoalas.innerHTML += `
       <tr>
@@ -50,10 +51,11 @@ function getKoalas() {
           <td>${koala.gender}</td>
           <td>${koala.ready_to_transfer}</td>
           <td>${koala.notes}</td>
-          <td><button onClick="deleteButton(event)"> Delete </button> </td>
+          <td> <button onClick="deleteKoala(${i})">Delete</button> 
+          </td>
       </tr>
   `;
-
+      i += 1;
     } // end getKoalas
   }).catch((error) => {
     console.log(error);
@@ -67,5 +69,16 @@ function saveKoala() {
 
 }
 
-getKoalas();
 
+function deleteKoala(index) {
+  console.log(`Deleting koala ${index}`)
+  axios.delete(`/koalas/${index}`).then((response) => {
+    console.log(response);
+    getKoalas();
+  }).catch((error) => {
+    console.log(error);
+    alert('Something went wrong.');
+  })
+}
+
+getKoalas();
