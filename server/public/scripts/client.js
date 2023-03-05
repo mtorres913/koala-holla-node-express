@@ -1,6 +1,6 @@
 console.log( 'js' );
 
-let nameIn = document.querySelector('#name').value
+let nameIn = document.querySelector('#nameIn').value
 let ageIn = document.querySelector('#ageIn').value
 let genderIn = document.querySelector('#genderIn').value
 let readyForTransferIn = document.querySelector('#readyForTransferIn').value
