@@ -6,6 +6,7 @@ let genderIn = document.querySelector('#genderIn').value
 let readyForTransferIn = document.querySelector('#readyForTransferIn').value
 let notesIn = document.querySelector('#notesIn').value
 
+
 function submitKoala(event){
 event.preventDefault();
 console.log('In submitKoala function');
@@ -18,7 +19,11 @@ let koalasForServer = {
 axios.post('/koalas', koalasForServer).then((response) => {
   console.log(response);
   getKoalas();
-  document.querySelector('#addKoala').reset()
+  document.querySelector('#nameIn').value = ''
+  document.querySelector('#ageIn').value = ''
+  document.querySelector('#genderIn').value = ''
+  document.querySelector('#readyForTransferIn').value = ''
+  document.querySelector('#notesIn').value = ''
 }).catch((error) => {
   console.log(error);
   alert('Something went wrong.');
