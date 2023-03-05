@@ -1,7 +1,12 @@
 const express = require('express');
 const koalaRouter = express.Router();
 
-let koalaList = []
+let koalaList = [
+    {id: 1, name: 'Scotty', gender:'M', age:'4', ready_to_transfer: 'Y', notes: ''}
+
+
+
+]
 // DB CONNECTION
 
 
