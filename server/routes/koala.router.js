@@ -13,8 +13,11 @@ let koalaList = [
 
 
 // GET
-
-
+koalaRouter.get('/', (req, res) => {
+    console.log('GET Request made for /quotes');
+    // Send back the list of quotes!
+    res.send(koalaList);
+});
 // POST
 koalaRouter.post('/', (req, res) => {
     console.log('POST Request made for /koalas');
