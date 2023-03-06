@@ -43,7 +43,33 @@ function getKoalas() {
     viewKoalas.innerHTML = '';
     let i = 0;
     for (let koala of koalasFromServer) {
-      viewKoalas.innerHTML += `
+      if (koala.ready_to_transfer == 'Y') {
+        viewKoalas.innerHTML += `
+        <tr>
+            <td>${koala.id}</td>
+            <td>${koala.name}</td>
+            <td>${koala.age}</td>
+            <td>${koala.gender}</td>
+            <td>${koala.ready_to_transfer}</td>
+            <td>${koala.notes}</td>
+            <td> <button onClick="deleteKoala(${i})">Delete</button> 
+            </td>
+        </tr>
+    `;
+      } else if (koala.ready_to_transfer == 'y'){
+        viewKoalas.innerHTML += `
+      <tr>
+          <td>${koala.id}</td>
+          <td>${koala.name}</td>
+          <td>${koala.age}</td>
+          <td>${koala.gender}</td>
+          <td>${koala.ready_to_transfer}</td>
+          <td>${koala.notes}</td> 
+          <td> <button onClick="deleteKoala(${i})">Delete</button> 
+          </td>
+      </tr>
+  `; } else {
+        viewKoalas.innerHTML += `
       <tr>
           <td>${koala.id}</td>
           <td>${koala.name}</td>
@@ -51,11 +77,13 @@ function getKoalas() {
           <td>${koala.gender}</td>
           <td>${koala.ready_to_transfer}</td>
           <td>${koala.notes}</td>
+          <td> <button >Ready For Transfer</button> 
           <td> <button onClick="deleteKoala(${i})">Delete</button> 
           </td>
       </tr>
   `;
-      i += 1;
+        i += 1;
+      }
     } // end getKoalas
   }).catch((error) => {
     console.log(error);
@@ -82,3 +110,5 @@ function deleteKoala(index) {
 }
 
 getKoalas();
+
+// onClick="readyForTransfer()"
