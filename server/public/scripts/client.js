@@ -77,7 +77,7 @@ function getKoalas() {
           <td>${koala.gender}</td>
           <td>${koala.ready_to_transfer}</td>
           <td>${koala.notes}</td>
-          <td> <button >Ready For Transfer</button> 
+          <td> <button onClick="readyForTransfer(event)">Ready For Transfer</button> 
           <td> <button onClick="deleteKoala(${i})">Delete</button> 
           </td>
       </tr>
@@ -111,4 +111,14 @@ function deleteKoala(index) {
 
 getKoalas();
 
-// onClick="readyForTransfer()"
+function readyForTransfer(event) {
+  event.preventDefault();
+  axios.get('/koalas').then((response) => {
+    console.log(response);
+    let koalasFromServer = response.data;
+  let parent = this.parentNode.parentNode;
+  
+  deleteKoala(index); 
+  
+  
+}
