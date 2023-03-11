@@ -111,14 +111,14 @@ function deleteKoala(index) {
 
 getKoalas();
 
-function readyForTransfer(event) {
-  event.preventDefault();
-  axios.get('/koalas').then((response) => {
-    console.log(response);
-    let koalasFromServer = response.data;
-  let parent = this.parentNode.parentNode;
+// function readyForTransfer(event) {
+//   event.preventDefault();
+//   axios.get('/koalas').then((response) => {
+//     console.log(response);
+//     let koalasFromServer = response.data;
+//   let parent = this.parentNode.parentNode;
   
-  deleteKoala(index); 
+//   deleteKoala(index); 
   
   
-}
+// }
