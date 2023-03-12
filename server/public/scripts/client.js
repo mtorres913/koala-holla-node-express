@@ -1,6 +1,6 @@
 console.log('js');
 
-let currentIndex = 6;
+// let currentIndex = 6;
 function submitKoala(event) {
   event.preventDefault();
   console.log('In submitKoala function');
@@ -10,7 +10,7 @@ function submitKoala(event) {
   let readyForTransferIn = document.querySelector('#readyForTransferIn').value
   let notesIn = document.querySelector('#notesIn').value
   let koalasForServer = {
-    id: currentIndex += 1,
+    // id: currentIndex += 1,
     name: nameIn,
     gender: genderIn,
     age: ageIn,

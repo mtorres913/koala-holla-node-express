@@ -33,8 +33,17 @@ koalaRouter.post('/', (req, res) => {
     // as a property of req.body.
     console.log(req.body);
     let koalaToAdd = req.body;
-    koalaList.push(koalaToAdd);
-    res.sendStatus(201); // Success!
+    // NEVER use template literal to enter strings
+    // Using $1 $2 will sanitize the input
+    let queryText = `INSERT INTO "koalas" ("name", "age", "gender", "transfer?", "notes")
+                    VALUES ($1, $2, $3, $4, $5, $6);`;
+    //                      $1                  $2
+    pool.query(queryText, [koalaToAdd.name,koalaToAdd.gender,koalaToAdd.age,koalaToAdd.ready_to_transfer,koalaToAdd.notes]).then((result) => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log(`Error in POST ${error}`)
+        res.sendStatus(500);
+    })
 });
 
 // PUT
