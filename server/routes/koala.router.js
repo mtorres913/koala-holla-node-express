@@ -50,13 +50,25 @@ koalaRouter.post('/', (req, res) => {
 });
 
 // PUT
-
+koalaRouter.put('/:id', (req,res) => {
+    console.log(`In PUT request /koalas`);
+    let koalaId = req.params.id;
+    let koalaToEdit = req.params.body;
+    let queryText = 'UPDATE "koalas" SET "name" = $1 , "age" = $2 "gender" = $3 "transfer" = $4 "notes" = $5 WHERE "id" $6;'
+    pool.query(queryText[koalaToEdit.name, koalaToEdit.age, koalaToEdit.gender, koalaToEdit.transfer, koalaToEdit.notes, koalaId]).then((result) => {
+        res.sendStatus(200);
+    }).catch((error) =>{
+        console.log(`Error in PUT ${error}`)
+        res.sendStatus(500);
+    })
+})
 
 // DELETE
 koalaRouter.delete('/:id', (req, res) => {
     // ??? What are we deleting?
     console.log(req.params.id); // Similar to req.body
     const deleteIndex = Number(req.params.id);
+    let queryText = 'DELETE FROM "koalas" WHERE "id" = $1';
     pool.query(queryText, [deleteIndex]).then((result) => {
         res.sendStatus(200);
     }).catch((error) => {

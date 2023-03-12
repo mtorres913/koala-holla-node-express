@@ -52,7 +52,7 @@ function getKoalas() {
             <td>${koala.gender}</td>
             <td>${koala.transfer}</td>
             <td>${koala.notes}</td>
-            <td> <button onClick="deleteKoala(${i})">Delete</button> 
+            <td> <button onClick="deleteKoala(${koala.id})">Delete</button> 
             </td>
         </tr>
     `;
@@ -65,7 +65,7 @@ function getKoalas() {
           <td>${koala.gender}</td>
           <td>${koala.transfer}</td>
           <td>${koala.notes}</td> 
-          <td> <button onClick="deleteKoala(${i})">Delete</button> 
+          <td> <button onClick="deleteKoala(${koala.id})">Delete</button> 
           </td>
       </tr>
   `; } else {
@@ -78,7 +78,7 @@ function getKoalas() {
           <td>${koala.transfer}</td>
           <td>${koala.notes}</td>
           <td> <button onClick="readyForTransfer(event)">Ready For Transfer</button> 
-          <td> <button onClick="deleteKoala(${i})">Delete</button> 
+          <td> <button onClick="deleteKoala(${koala.id})">Delete</button> 
           </td>
       </tr>
   `;
