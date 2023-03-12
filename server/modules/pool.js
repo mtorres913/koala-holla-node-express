@@ -4,7 +4,7 @@ const pg = require('pg');
 
 const pool = new pg.Pool({
     // The name of the database
-    database: 'koalas',
+    database: 'koala',
     //Our database is on our computer
     host: 'localhost',
     // What port is our database using
